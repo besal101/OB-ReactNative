@@ -1,53 +1,142 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
+import { Tabs } from "expo-router";
+import { Image, Text, View } from "react-native";
 
-import Colors from '../../constants/Colors';
-
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
+import Colors from "../../constants/Colors";
+import { FONTS } from "../../constants/Fonts";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-      }}>
+        tabBarActiveTintColor: "#2f95dc",
+        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          elevation: 0,
+          backgroundColor: "#fff",
+          borderTopColor: "transparent",
+          height: 80,
+        },
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
+          tabBarIcon: ({ focused }) => (
+            <View style={{ alignItems: "center", justifyContent: "center" }}>
+              <Image
+                source={require("../../assets/images/home.png")}
+                resizeMode="contain"
+                style={{
+                  width: 30,
+                  height: 30,
+                  marginTop: 10,
+                  tintColor: focused
+                    ? Colors.light.primary
+                    : Colors.light.tabIconDefault,
+                }}
+              />
+              <Text
+                style={{
+                  color: focused ? Colors.light.primary : Colors.light.text,
+                  ...FONTS.body5,
+                }}
+              >
+                HOME
+              </Text>
+            </View>
           ),
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="services"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ focused }) => (
+            <View style={{ alignItems: "center", justifyContent: "center" }}>
+              <Image
+                source={require("../../assets/images/services.png")}
+                resizeMode="contain"
+                style={{
+                  width: 30,
+                  height: 30,
+                  marginTop: 10,
+                  tintColor: focused
+                    ? Colors.light.primary
+                    : Colors.light.tabIconDefault,
+                }}
+              />
+              <Text
+                style={{
+                  color: focused ? Colors.light.primary : Colors.light.text,
+                  ...FONTS.body5,
+                }}
+              >
+                Services
+              </Text>
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="cart"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View style={{ alignItems: "center", justifyContent: "center" }}>
+              <Image
+                source={require("../../assets/images/cart.png")}
+                resizeMode="contain"
+                style={{
+                  width: 30,
+                  height: 30,
+                  marginTop: 10,
+                  tintColor: focused
+                    ? Colors.light.primary
+                    : Colors.light.tabIconDefault,
+                }}
+              />
+              <Text
+                style={{
+                  color: focused ? Colors.light.primary : Colors.light.text,
+                  ...FONTS.body5,
+                }}
+              >
+                Cart
+              </Text>
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View style={{ alignItems: "center", justifyContent: "center" }}>
+              <Image
+                source={require("../../assets/images/profile.png")}
+                resizeMode="contain"
+                style={{
+                  width: 30,
+                  height: 30,
+                  marginTop: 10,
+                  tintColor: focused
+                    ? Colors.light.primary
+                    : Colors.light.tabIconDefault,
+                }}
+              />
+              <Text
+                style={{
+                  color: focused ? Colors.light.primary : Colors.light.text,
+                  ...FONTS.body5,
+                }}
+              >
+                Profile
+              </Text>
+            </View>
+          ),
         }}
       />
     </Tabs>

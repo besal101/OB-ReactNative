@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "carapp",
-    "slug": "carapp",
+    "slug": "open-bonet",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -34,6 +34,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "4ed7c2a2-afd9-4297-82ea-a11c700c5768"
+      }
+    },
+    "owner": "khatribishal"
   }
 }
